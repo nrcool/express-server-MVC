@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Express</title>
 </head>
 <body>
     <h1>This is Our web Page (Client)</h1>
@@ -14,32 +15,8 @@
        <input type="submit" value="Add Student">
     </form>
 
-    <script>
-        let form = document.querySelector("form")
-
-        let name= document.getElementById("name")
-        let userclass= document.getElementById("class")
-        let age= document.getElementById("age")
-
-        form.addEventListener("submit",function(e){
-          e.preventDefault() 
-            let obj={
-                name:name.value,
-                class:userclass.value,
-                age:age.value
-            }
-            let json= JSON.stringify(obj)
-            fetch("/addstudent",{
-                method:"POST",
-                headers:{"Content-type":"application/json"},
-                body:json
-            }).then(res=>{
-                if(res==="ok"){
-                    form.reset()
-                }
-
-            })
-        })
+    <script src="./js/index.js">
+   
 
     </script>
 </body>

@@ -10,7 +10,7 @@ const Students = [
         id: 2,
         name: "ali",
         class: "fwb19",
-        age: 33
+        age: 34
     }
 ]
 module.exports=Students
