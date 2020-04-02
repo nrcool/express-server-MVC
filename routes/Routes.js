@@ -1,5 +1,5 @@
 const Route= require("express").Router()
-const {getindexHtml,getAllStudents,FindStudentById,updateStudentPatch,updateStudentPut,deleteStudent} =require("../Controller/studentController")
+const {getindexHtml,getAllStudents,getorders,FindStudentById,addStudent,updateStudentPatch,updateStudentPut,deleteStudent} =require("../Controller/studentController")
 const Students= require("../Modals/students")
 
 //routes in express
@@ -17,6 +17,7 @@ Route.get("/search",(req,res)=>{
     let student= Students.find(({age})=>age===parseInt(req.query.age))
     res.json(student)
 })
+Route.get("/orders",getorders)
 
 //creating post Routes
 
@@ -24,20 +25,14 @@ Route.post("/", (req, res) => {
 
     res.send("this is a post Route")
 })
-Route.post("/addstudent", (req, res) => {
-    console.log(req.body)
-
-    Students.push(req.body)
-
-    res.send("ok")
-})
+Route.post("/addstudent", addStudent)
 
 
 
 //update we can use put/patch
 Route.patch("/update/:name", updateStudentPatch)
 
-Route.put("/update/:id", updateStudentPut)
+Route.put("/updatebyid/:id", updateStudentPut)
 
 
 //delete any student in array ...Delete method

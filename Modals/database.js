@@ -5,8 +5,8 @@ const file = new FileSync('./Modals/db.json')
 const db = low(file)
  
 // Set some defaults
- db.defaults({ Students: []})
-  .write() 
+/*  db.defaults({ Students: []})
+  .write()  */
 
 
 module.exports=db

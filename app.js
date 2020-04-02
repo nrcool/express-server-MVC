@@ -3,6 +3,14 @@ const {mymiddleware} = require("./middleware/middleware")
 //create our express server
 const app = express()
 
+/* crud operation */
+/* create (Post method)
+read (Get method)
+update (Patch,Put method)
+delete (Delete method) */
+
+
+
 
 //telling server to serve all statics files
 app.use(express.static("build"))

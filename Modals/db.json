@@ -2,15 +2,26 @@
   "Students": [
     {
       "id": 1,
-      "name": "hatem",
+      "name": "Fran",
       "class": "fwb19",
-     "age": 30
-  },
-  {
-      "id": 2,
-      "name": "ali",
-     "class": "fwb19",
+      "age": 32
+    },
+    {
+      "id": 3,
+      "name": "raza",
       "age": 24
-  }
+    },
+    {
+      "id": 4,
+      "name": "Jaime",
+      "age": 30
+    }
+  ],
+    "Products":[],
+
+  "Orders":[
+    {"product":"handy",
+      "id":2,
+    "price":25}
   ]
 }

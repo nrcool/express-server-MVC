@@ -12,7 +12,10 @@ const getindexHtml=(req, res) => {
         let allStudents = db.get("Students").value()
         res.json(allStudents)
     }
-
+const getorders=(req,res)=>{
+    let orders= db.get("Orders").value()
+    res.json(orders)
+}
 const FindStudentById=(req,res)=>{
     console.log("from server.......",req.params.id)
     //get each student by id in lowdb
@@ -23,20 +26,50 @@ const FindStudentById=(req,res)=>{
     res.json(studentById)
 }
 
+
+//post route for add student
+const addStudent=(req, res) => {
+    console.log(req.body)
+
+ /*    Students.push(req.body) */
+ //add student in low db
+
+ db.get("Students").push(req.body).write()
+
+ let allstudents=db.get("Students").value()
+    res.json(allstudents)
+}
+
+
+
 const updateStudentPatch=(req, res) => {
     console.log(req.params.name)
-    let user = Students.find((user) => user.name === req.params.name)
-    user.age = user.age + 1
-    res.json(Students)
+
+/*   let user = Students.find((user) => user.name === req.params.name)  */
+    let student= db.get("Students").find({name:req.params.name}).value()
+    //increment age by 1
+    student.age=student.age+1
+
+    //again assign back our student in our database
+    db.get("Students").assign(student).write()
+    res.json(student)
+
 }
+
 const updateStudentPut=(req, res) => {
-    console.log(req.params)
+    console.log(req.params.id)
     console.log(req.body)
+    //find old student in database and replace it with new one
+   db.get("Students").find({id:parseInt(req.params.id)}).assign(req.body).write()
     res.send("okay")
 }
+
 const deleteStudent=(req,res)=>{
-    console.log(req.params)
+    console.log(req.params.id)
+    //delete student from databse by id
+    db.get("Students").remove({id:parseInt(req.params.id)}).write()
+
     res.send("student deleted")
 }
 
-module.exports={getindexHtml,getAllStudents,FindStudentById,updateStudentPatch,updateStudentPut,deleteStudent}
+module.exports={getindexHtml,getorders,getAllStudents,FindStudentById,addStudent,updateStudentPatch,updateStudentPut,deleteStudent}
